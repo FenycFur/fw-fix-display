@@ -4,7 +4,6 @@ After=sleep.target
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/sleep 3
 ExecStart=%h/.config/systemd/user/fix-display.sh
 
 [Install]
