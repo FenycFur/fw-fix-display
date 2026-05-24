@@ -1,0 +1,33 @@
+= screen-fix
+
+Workaround for screen flicker upon wake from sleep or hibernate. Present on Framework 16 1st gen.
+
+
+== Usage
+
+`make install`
+`make uninstall`
+
+
+== Files?
+
+sleep.target
+Dummy systemd target that acts as synchronization point. Other services hook into it to run on sleep/wake events.
+
+watch_sleep.service
+Runs watch_sleep.sh persistently. Restarts on crash.
+
+watch_sleep.sh
+Listens on dbus for the system's PrepareForSleep signal and starts/stops sleep.target accordingly.
+
+fix-display.service
+Triggered when sleep.target stops (on wake). Runs fix-display.sh to reprogram the display.
+
+fix-display.sh
+Detects session tpye (X11 or Wayland) and runs the appropraite tool to force a modeset and fix the display after hibernate/sleep.
+
+
+== Credit
+
+https://aiguofer.medium.com/systemd-sleep-target-for-user-level-10eb003b3bfd[Systemd sleep.target for user level]
+- Diego Fernandez Giraldo (Jan 27, 2019)

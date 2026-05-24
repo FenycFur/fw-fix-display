@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch for sleep signal to start sleep.target
+After=default.target
+
+[Service]
+ExecStart=/bin/bash -c ~/.config/systemd/user/watch_sleep.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
