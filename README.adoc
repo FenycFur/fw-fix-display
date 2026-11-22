@@ -6,6 +6,7 @@ Tested working on (X11 and Wayland) x (sddm) x (KDE).
 
 == Usage
 
+If you choose to use this on your computer, you *must* check that your monitor identifier matches what is configured in `fix-display.sh`. If it doesn't, discover what it is using `kscreen-doctor` (Wayland) or `xrandr` (X11). Then use that identifier. +
 `make install` +
 `make uninstall`
 
